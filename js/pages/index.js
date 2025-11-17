@@ -102,12 +102,32 @@ function carregarFormulario() {
 }
 
 function obterRespostas() {
+  const selectLinguaEstrangeira = document.querySelector(
+    "#select-lingua-estrangeira"
+  );
   const formQuestoesRespostas = document.querySelector(
     "#form-questoes-respostas"
   );
-  const dadosForm = new FormData(formQuestoesRespostas);
 
-  return Object.fromEntries(dadosForm);
+  const dadosForm = new FormData(formQuestoesRespostas);
+  let respostas = Object.fromEntries(dadosForm);
+  // Inglês -> "I"; Caso contrário -> "E"
+  let sufixoIdioma = selectLinguaEstrangeira.value == "Inglês" ? "I" : "E";
+
+  for (let i = 1; i < 6; i++) {
+    // Se não tiver a chave com uma das questões de lingua estrangeira, pula a iteração
+    if (!respostas.hasOwnProperty(i)) continue;
+    respostas[`${i}${sufixoIdioma}`] = respostas[i];
+    delete respostas[i];
+  }
+
+  return respostas;
+}
+
+function corrigirEMostrarRespostas() {
+  const respostas = obterRespostas();
+
+  console.log(respostas);
 }
 
 async function execucaoInicialIndex() {
@@ -115,15 +135,16 @@ async function execucaoInicialIndex() {
   carregarFormulario();
 
   const selectEdicaoProva = document.querySelector("#select-edicao-prova");
-  const formQuestoesRespostas = document.querySelector(
-    "#form-questoes-respostas"
+  const buttonCorrigirQuestoesRespostas = document.querySelector(
+    "#button-corrigir-questoes-respostas"
   );
 
   selectEdicaoProva.addEventListener("change", () => {
     carregarCoresCadernos();
   });
-  formQuestoesRespostas.addEventListener("change", () => {
-    console.log(obterRespostas());
+  buttonCorrigirQuestoesRespostas.addEventListener("click", (event) => {
+    event.preventDefault();
+    corrigirEMostrarRespostas();
   });
 }
 

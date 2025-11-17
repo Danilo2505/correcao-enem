@@ -17,7 +17,7 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 0 1rem 1rem 1rem;
 }
 
 /* --- Inputs --- */
@@ -58,10 +58,117 @@ input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
+/* --- Selects --- */
+/*
+  Integração do select com a paleta personalizada do site
+  — funciona para tema escuro e claro
+*/
+
+/* SELECT */
+select {
+  border: 1px solid var(--bg-color-6);
+  background: var(--bg-color-2);
+  color: var(--bg-color-4);
+}
+
+select:hover,
+select:focus {
+  background: var(--bg-color-3);
+  border-color: var(--accent-color-3);
+}
+
+/* Ícone da seta */
+select::picker-icon {
+  color: var(--accent-color-1);
+}
+
+/* OPÇÕES */
+option {
+  background: var(--bg-color-2);
+  color: var(--bg-color-4);
+  border: 1px solid var(--bg-color-6);
+  border-bottom: none;
+}
+
+option:first-of-type {
+  border-radius: 6px 6px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 6px 6px;
+  border-bottom: 1px solid var(--bg-color-6);
+}
+
+option:hover,
+option:focus {
+  background: var(--bg-color-3);
+}
+
+option:checked {
+  background: var(--accent-color-3);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Checkmark */
+option::checkmark {
+  color: var(--accent-color-1);
+}
+
 /* --- Botões --- */
+/* Reset específico para botões */
+button {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.5rem;
+
+  background-color: var(--bg-color-3);
+  color: var(--bg-color-4);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+/* Hover padrão */
+button:hover {
+  background-color: var(--bg-color-2);
+}
+
+/* Focus acessível */
+button:focus-visible {
+  outline: 2px solid var(--accent-color-3);
+  outline-offset: 2px;
+}
+
+/* Active */
+button:active {
+  transform: scale(0.97);
+}
+
+/* Disabled */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Ícones */
+button svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
+  transition: transform 0.2s;
+}
+
 button:hover svg {
   transform: scale(1.1);
-  transition: 0.3s;
 }
 
 /* ----- Botão de Tema ----- */
