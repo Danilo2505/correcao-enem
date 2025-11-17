@@ -11,3 +11,10 @@ const buscarSvg = (image) => {
       return true;
     });
 };
+
+// Função para inverter a ordem dos elementos filhos de um elemento via seletor
+function inverterElementosFilhos(seletor) {
+  const elementoPai = document.querySelector(seletor);
+
+  console.log(elementoPai.children);
+}

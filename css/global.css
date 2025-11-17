@@ -1,10 +1,14 @@
 /* ----- Reset ----- */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   box-sizing: border-box;
   scrollbar-width: smooth;
 }
 
+/* ----- Geral ----- */
+/* --- Body --- */
 body {
   background-color: var(--bg-color-1);
   color: var(--accent-color-1);
@@ -13,8 +17,54 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  margin: 0 1rem;
 }
 
+/* --- Inputs --- */
+/* - Tipo Radio - */
+input[type="radio"] {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--bg-color-1);
+  margin: 0;
+  font: inherit;
+  height: 1.5rem;
+  aspect-ratio: 1 / 1;
+  color: currentColor;
+  border: 0.1rem solid currentColor;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked {
+  color: var(--accent-color-1);
+}
+
+/* Marcador */
+input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0.15rem solid transparent;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em currentColor;
+}
+
+/* Input Marcado */
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+/* --- Botões --- */
+button:hover svg {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+/* ----- Botão de Tema ----- */
 #button-tema {
   position: fixed;
   bottom: 1rem;
@@ -32,9 +82,4 @@ body {
   fill: var(--bg-color-1);
   width: 100%;
   height: 100%;
-}
-
-button:hover svg {
-  transform: scale(1.1);
-  transition: 0.3s;
 }

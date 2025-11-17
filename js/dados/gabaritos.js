@@ -103,7 +103,7 @@ const gabaritos = {
         },
       },
       {
-        cor_da_prova: "azul",
+        cor_da_prova: "Azul",
         gabarito: {
           "1I": "D",
           "2I": "D",
@@ -204,7 +204,7 @@ const gabaritos = {
         },
       },
       {
-        cor_da_prova: "branca",
+        cor_da_prova: "Branco",
         gabarito: {
           "1I": "E",
           "2I": "A",
@@ -305,7 +305,7 @@ const gabaritos = {
         },
       },
       {
-        cor_da_prova: "verde",
+        cor_da_prova: "Verde",
         gabarito: {
           "1I": "D",
           "2I": "D",
@@ -408,7 +408,7 @@ const gabaritos = {
     ],
     dia_2: [
       {
-        cor_da_prova: "azul",
+        cor_da_prova: "Azul",
         gabarito: {
           91: "D",
           92: "D",
@@ -598,7 +598,7 @@ const gabaritos = {
         },
       },
       {
-        cor_da_prova: "cinza",
+        cor_da_prova: "Cinza",
         gabarito: {
           91: "C",
           92: "D",
@@ -693,7 +693,7 @@ const gabaritos = {
         },
       },
       {
-        cor_da_prova: "verde",
+        cor_da_prova: "Verde",
         gabarito: {
           91: "E",
           92: "E",
