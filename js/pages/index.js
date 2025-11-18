@@ -25,6 +25,26 @@ function carregarCoresCadernos() {
   }
 }
 
+function carregarQuestoesRespostasEmTexto(questoes) {
+  const formQuestoesRespostas = document.querySelector(
+    "#form-questoes-respostas"
+  );
+  const dadosForm = new FormData(formQuestoesRespostas);
+  const ultimaQuestao = questoes[questoes.length - 1];
+  let texto = "";
+
+  for (const questao of questoes) {
+    texto += `${questao}\n${questao}`;
+    if (questao != ultimaQuestao) {
+      texto += `\n`;
+    }
+  }
+
+  // !!!
+  console.log(texto);
+  console.log(dadosForm);
+}
+
 function carregarTextoQuestoesRespostas() {
   const textareaQuestoesRespostas = document.querySelector(
     "#textarea-questoes-respostas"
@@ -313,17 +333,35 @@ async function execucaoInicialIndex() {
   const buttonCarregarTextoQuestoesRespostas = document.querySelector(
     "#button-carregar-texto-questoes-respostas"
   );
+  const formQuestoesRespostas = document.querySelector(
+    "#form-questoes-respostas"
+  );
   const buttonCorrigirQuestoesRespostas = document.querySelector(
     "#button-corrigir-questoes-respostas"
+  );
+
+  // Pega os atributos `name` dos inputs[type="radio"] do gabarito
+  const questoes = new Set(
+    Array.from(
+      formQuestoesRespostas.querySelectorAll(
+        'input[type="radio"][name]:nth-of-type(1)'
+      )
+    ).map((x) => x.name)
   );
 
   selectEdicaoProva.addEventListener("change", () => {
     carregarCoresCadernos();
   });
+
   buttonCarregarTextoQuestoesRespostas.addEventListener("click", (event) => {
     event.preventDefault();
     carregarTextoQuestoesRespostas();
   });
+
+  formQuestoesRespostas.addEventListener("click", () => {
+    carregarQuestoesRespostasEmTexto(questoes);
+  });
+
   buttonCorrigirQuestoesRespostas.addEventListener("click", (event) => {
     event.preventDefault();
     corrigirEMostrarRespostas();
