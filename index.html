@@ -136,9 +136,15 @@ E
 5
 A"
         ></textarea>
-        <button id="button-carregar-texto-questoes-respostas" type="submit">
-          Carregar
-        </button>
+
+        <div class="div-row-of-buttons">
+          <button id="button-carregar-texto-questoes-respostas" type="submit">
+            Carregar
+          </button>
+          <button class="button-corrigir-questoes-respostas" type="submit">
+            Corrigir
+          </button>
+        </div>
       </form>
     </section>
 
@@ -205,7 +211,7 @@ A"
           <div class="div-questoes-respostas"></div>
         </fieldset>
 
-        <button id="button-corrigir-questoes-respostas" type="submit">
+        <button class="button-corrigir-questoes-respostas" type="submit">
           Corrigir
         </button>
       </form>
@@ -346,16 +352,16 @@ A"
       <!-- --- Botão Salvar Gabarito --- -->
       <button id="button-modal-salvar-gabarito">
         <img
-          src="./assets/icons/download.svg"
-          alt="Carregar Gabarito"
+          src="./assets/icons/floppy-fill.svg"
+          alt="Salvar Gabarito"
           onload="buscarSvg(this)"
         />
       </button>
       <!-- --- Botão Carregar Gabarito --- -->
       <button id="button-modal-carregar-gabarito">
         <img
-          src="./assets/icons/floppy-fill.svg"
-          alt="Salvar Gabarito"
+          src="./assets/icons/download.svg"
+          alt="Carregar Gabarito"
           onload="buscarSvg(this)"
         />
       </button>
@@ -390,10 +396,7 @@ A"
         <textarea
           readonly
           class="textarea-modal-gabarito"
-          placeholder="A
-B
-C
-D"
+          placeholder=""
         ></textarea>
         <button class="button-modal-salvar" type="submit">Salvar</button>
 
